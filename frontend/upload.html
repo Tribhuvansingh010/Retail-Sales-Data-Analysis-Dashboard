@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--  Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Upload CSV Files</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="upload-container">
+    <h2>Upload CSV Files</h2>
+
+    <form id="upload-form" enctype="multipart/form-data">
+        <!--  restrict to CSV -->
+        <input type="file" id="file-input" name="file" accept=".csv" multiple required>
+
+        <button type="submit" id="upload-btn">Upload</button>
+    </form>
+
+    <span id="upload-status"></span>
+</div>
+
+<script>
+const form = document.getElementById('upload-form');
+const status = document.getElementById('upload-status');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const input = document.getElementById('file-input');
+    const files = input.files;
+
+    if (!files.length) {
+        status.textContent = " Please select CSV files";
+        return;
+    }
+
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append("file", files[i]);
+    }
+
+    status.textContent = "Uploading & processing...";
+
+    try {
+        const res = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        if (res.ok) {
+            status.textContent = " Upload complete. Redirecting...";
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1200);
+        } else {
+            status.textContent = " Upload failed";
+        }
+
+    } catch (err) {
+        status.textContent = "Server not responding";
+    }
+});
+</script>
+
+</body>
+</html>
+
+

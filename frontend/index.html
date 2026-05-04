@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Sales Dashboard</title>
+
+    
+    <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Retail Sales Dashboard</h1>
+    <p>Interactive overview of sales, customers, and products</p>
+</header>
+
+<!-- Refresh Button -->
+<button id="refresh-btn" class="refresh-btn">⟳ Refresh Data</button>
+
+<!-- Summary Cards -->
+<section class="summary-cards">
+    <div class="card blue" id="total-sales">
+        <h3>Total Sales</h3>
+        <p>0</p>
+    </div>
+
+    <div class="card green" id="total-customers">
+        <h3>Total Customers</h3>
+        <p>0</p>
+    </div>
+
+    <div class="card orange" id="total-products">
+        <h3>Total Products</h3>
+        <p>0</p>
+    </div>
+</section>
+
+<!-- Search -->
+<section class="search-container">
+    <input type="text" id="search-input" placeholder="Search by customer, product, or date...">
+    <button id="search-btn">Search</button>
+    <button id="reset-btn">Reset</button>
+</section>
+
+<!-- Charts -->
+<section class="charts">
+
+    <div class="chart-container">
+        <h2>Top Products by Sales</h2>
+        <canvas id="productsChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Monthly Sales Trend</h2>
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Customers by Region</h2>
+        <canvas id="customersChart"></canvas>
+    </div>
+
+</section>
+
+<!-- Upload Section -->
+<section class="upload-container">
+    <h2>Upload CSV Files</h2>
+
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="file-input" accept=".csv" required>
+
+        <!--  Prevent accidental form submit -->
+        <button type="submit" id="upload-btn">Upload</button>
+        <span id="upload-status"></span>
+
+        <button type="button" id="reset-upload-btn">Reset Uploaded Data</button>
+    </form>
+
+    <p class="upload-note">
+        Upload sales.csv, customers.csv, or products.csv
+    </p>
+</section>
+
+<!-- Tables -->
+<section class="tables">
+
+    <div class="table-container">
+        <h2>Sales Data</h2>
+        <table id="sales-table">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h2>Customers Data</h2>
+        <table id="customers-table">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h2>Products Data</h2>
+        <table id="products-table">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 Retail Analytics Dashboard</p>
+</footer>
+
+<!--  Load JS at end for performance -->
+<script src="script.js"></script>
+<script src="dashboard.js"></script>
+
+</body>
+</html>

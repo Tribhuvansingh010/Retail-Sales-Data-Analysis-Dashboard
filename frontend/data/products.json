@@ -1,0 +1,26 @@
+[
+    {
+        "product_id":"P01",
+        "product_name":"Shoes",
+        "category":"Fashion",
+        "cost_price":300
+    },
+    {
+        "product_id":"P02",
+        "product_name":"Phone",
+        "category":"Electronics",
+        "cost_price":900
+    },
+    {
+        "product_id":"P03",
+        "product_name":"Jacket",
+        "category":"Fashion",
+        "cost_price":500
+    },
+    {
+        "product_id":"P04",
+        "product_name":"Laptop",
+        "category":"Electronics",
+        "cost_price":40000
+    }
+]
